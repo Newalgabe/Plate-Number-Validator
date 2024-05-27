@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azerbaijan Plate Number Validator</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+  }
+  .container {
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(5px);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff6e7f;
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    animation: pulse 1s infinite alternate;
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  form {
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ff6e7f;
+  }
+  input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 2px solid #ff6e7f;
+    background-color: transparent;
+    color: #fff;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  input[type="text"]:focus {
+    border-color: #ff4151;
+    color: #ff4151;
+  }
+  button[type="submit"], button[type="button"] {
+    padding: 12px 24px;
+    background-color: #ff6e7f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-right: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(255, 110, 127, 0.3);
+  }
+  button[type="submit"]:hover, button[type="button"]:hover {
+    background-color: #ff4151;
+    transform: translateY(-3px);
+  }
+  #result {
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .error-message {
+    color: #ff4151;
+    margin-bottom: 10px;
+    font-weight: bold;
+    animation: shake 0.5s ease infinite;
+  }
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25%, 75% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+  }
+  .success-message {
+    color: #4caf50;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .loader {
+    border: 6px solid #ff6e7f;
+    border-radius: 50%;
+    border-top: 6px solid #fff;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Azerbaijan Plate Number Validator</h1>
+    <form id="plateNumberForm">
+      <label for="plateNumber">Enter Plate Number:</label>
+      <input type="text" id="plateNumber" pattern="[0-9]{2}-[A-Za-z]{2}-[0-9]{3}" required>
+      <br>
+      <button type="submit">Validate</button>
+      <button type="button" onclick="clearPlate()">Clear</button>
+      <div class="loader" id="loader" style="display: none;"></div>
+    </form>
+    <div id="result">
+      <p id="regionDisplay">Region: </p>
+      <p id="capitalizationDisplay">Capitalization: </p>
+      <p id="formSubmission" class="success-message"></p>
+      <hr style="border-color: #ff6e7f;">
+      <p style="font-size: 14px; color: #ccc;">Note: The plate number format should be 00-XX-000.</p>
+    </div>
+  </div>
+
+  <script src="HW.js"></script>
+</body>
+</html>
